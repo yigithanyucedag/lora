@@ -50,7 +50,7 @@ class LoraInjectedLinear(nn.Module):
         nn.init.normal_(self.lora_down.weight, std=1 / r)
         nn.init.zeros_(self.lora_up.weight)
 
-    def forward(self, input):
+    def forward(self, input, scale: float = 1.0):  # FIXED: add dummy scale argument
         return (
             self.linear(input)
             + self.dropout(self.lora_up(self.selector(self.lora_down(input))))
