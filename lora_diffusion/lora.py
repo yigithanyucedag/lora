@@ -721,7 +721,6 @@ def monkeypatch_or_replace_lora_extended(
     target_replace_module=DEFAULT_TARGET_REPLACE,
     r: Union[int, List[int]] = 4,
 ):
-    _tmp = None
     for _module, name, _child_module in _find_modules(
         model,
         target_replace_module,
@@ -782,7 +781,11 @@ def monkeypatch_or_replace_lora_extended(
                 _tmp.conv.bias = bias
 
         # switch the module
-        _module._modules[name] = _tmp
+        try:
+            _module._modules[name] = _tmp
+        except Exception as e:
+            print(_child_module.__class__)
+            raise(e)
 
         up_weight = loras.pop(0)
         down_weight = loras.pop(0)
