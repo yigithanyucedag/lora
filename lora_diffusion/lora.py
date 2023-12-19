@@ -721,13 +721,12 @@ def monkeypatch_or_replace_lora_extended(
     target_replace_module=DEFAULT_TARGET_REPLACE,
     r: Union[int, List[int]] = 4,
 ):
+    _tmp = None
     for _module, name, _child_module in _find_modules(
         model,
         target_replace_module,
         search_class=[nn.Linear, LoraInjectedLinear, LoRACompatibleLinear, nn.Conv2d, LoraInjectedConv2d],
     ):
-
-        _tmp = None
 
         if _child_module.__class__ in {nn.Linear, LoraInjectedLinear, LoRACompatibleLinear}:
             if len(loras[0].shape) != 2:
