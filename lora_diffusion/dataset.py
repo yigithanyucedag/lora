@@ -39,6 +39,32 @@ OBJECT_TEMPLATE = [
     "a photo of a small {}",
 ]
 
+PERSON_TEMPLATE = [
+    "a picture of {}",
+    "a closeup of {}",
+    "a closeup photo of {}",
+    "a close-up picture of {}",
+    "a photo of {}",
+    "a photo of {}",
+    "the photo of {}",
+    "a cropped photo of {}",
+    "a funny photo of {}",
+    "a selfie of {}",
+    "a selfie taken by {}",
+    "{} taking a selfie",
+    "{} is having fun, 4k photograph",
+    "{} wearing a plaidered shirt standing next to another person",
+    "smiling {} in a hoodie and sweater",
+    "a photo of the cool {}",
+    "a close-up photo of {}",
+    "a bright photo of {}",
+    "a cropped photo of {}",
+    "a brilliant HD photo of {}",
+    "a beautiful picture of {}",
+    "a photo showing {}",
+    "a great photo of {}",
+]
+
 STYLE_TEMPLATE = [
     "a painting in the style of {}",
     "a rendering in the style of {}",
@@ -65,6 +91,7 @@ NULL_TEMPLATE = ["{}"]
 
 TEMPLATE_MAP = {
     "object": OBJECT_TEMPLATE,
+    "person": PERSON_TEMPLATE,
     "style": STYLE_TEMPLATE,
     "null": NULL_TEMPLATE,
 }
