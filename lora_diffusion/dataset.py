@@ -53,8 +53,6 @@ PERSON_TEMPLATE = [
     "a selfie taken by {}",
     "{} taking a selfie",
     "{} is having fun, 4k photograph",
-    "{} wearing a plaidered shirt standing next to another person",
-    "smiling {} in a hoodie and sweater",
     "a photo of the cool {}",
     "a close-up photo of {}",
     "a bright photo of {}",
