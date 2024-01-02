@@ -111,10 +111,11 @@ def get_models(
             initializer_token_id = token_ids[0]
             token_embeds[placeholder_token_id] = token_embeds[initializer_token_id]
 
-    vae = AutoencoderKL.from_single_file(
+    vae = AutoencoderKL.from_pretrained(
         pretrained_vae_name_or_path or pretrained_model_name_or_path,
         subfolder=None if pretrained_vae_name_or_path else "vae",
         revision=None if pretrained_vae_name_or_path else revision,
+        use_auth_token=use_auth_token,
     )
     unet = UNet2DConditionModel.from_pretrained(
         pretrained_model_name_or_path,
