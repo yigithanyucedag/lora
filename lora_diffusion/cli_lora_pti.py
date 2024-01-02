@@ -52,6 +52,7 @@ def get_models(
     revision,
     placeholder_tokens: List[str],
     initializer_tokens: List[str],
+    use_auth_token: Optional[str],
     device="cuda:0",
 ):
 
@@ -59,12 +60,14 @@ def get_models(
         pretrained_model_name_or_path,
         subfolder="tokenizer",
         revision=revision,
+        use_auth_token=use_auth_token,
     )
 
     text_encoder = CLIPTextModel.from_pretrained(
         pretrained_model_name_or_path,
         subfolder="text_encoder",
         revision=revision,
+        use_auth_token=use_auth_token,
     )
 
     placeholder_token_ids = []
@@ -117,6 +120,7 @@ def get_models(
         pretrained_model_name_or_path,
         subfolder="unet",
         revision=revision,
+        use_auth_token=use_auth_token,
     )
 
     return (
@@ -719,6 +723,7 @@ def train(
     lora_rank: int = 4,
     lora_unet_target_modules={"CrossAttention", "Attention", "GEGLU"},
     lora_clip_target_modules={"CLIPAttention"},
+    use_auth_token: Optional[str] = None,
     lora_dropout_p: float = 0.0,
     lora_scale: float = 1.0,
     use_extended_lora: bool = False,
@@ -807,6 +812,7 @@ def train(
         revision,
         placeholder_tokens,
         initializer_tokens,
+        use_auth_token,
         device=device,
     )
 
